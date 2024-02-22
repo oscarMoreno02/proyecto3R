@@ -1,0 +1,58 @@
+
+
+
+<div class="tic-tac-toe">
+    <h1>3 EN RAYA DAW2</h1>
+  @if(isLogged==true){
+
+    <h4>{{estado}}</h4>
+    @if(tiempoRestante!=null){
+      <p>{{tiempoRestante}}</p>
+    }
+    @if (jugadorNumero!=0) {
+      <h4>Tu Mano :{{jugadorActual}}</h4>
+      <h4>Tu numero de jugador: {{jugadorNumero}}</h4>
+      <h4>Rival: {{nombreRival}}</h4>
+     
+    }
+    @if(jugando==true){
+      @if(this.turnoActual==jugadorNumero){
+
+        <h4 style='color: green'>Turno para el jugador :{{usuario.nombre}}</h4>
+      }@else{
+        <h4 style='color: red'>Turno para el jugador :{{nombreRival}}</h4>
+      }
+      <div *ngFor="let row of board; let i = index" class="row">
+        <div *ngFor="let cell of row; let j = index" class="cell" (click)="mover(i, j)" [class.cross]="cell === 'X'" [class.circle]="cell === 'O'">
+          {{ cell }}
+        </div>
+      </div>
+      <br>
+      <label for="">Enviar mensaje</label><br>
+      <input type="text" [(ngModel)]="mensaje"  ><br><button (click)="sendMessage()">Enviar</button>
+    }
+    @if(finalizada==true){
+      <h1>{{ganador}}</h1>
+      <button (click)="reiniciar()">Reiniciar</button>
+    }
+    @if(jugadorNumero==0){
+      
+      <button (click)="buscarRival()">Buscar Rival</button>
+    }
+    <br>
+    <br>
+   
+  }@else{
+    <label for="">{{labelLogin}}</label><br>
+    <input [(ngModel)]="usuario.nombre" type="text"><br>
+    <button (click)="login()" >Login</button>
+  }
+  </div>
+  
+  
+  
+  
+  <br>
+  <br>
+
+

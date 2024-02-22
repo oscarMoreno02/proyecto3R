@@ -1,0 +1,42 @@
+<!-- Código de CHATGPT pero como veis un poco de css tienen 
+que llevar las cosas, cuidado en DIOSES-->
+
+.tic-tac-toe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .cell:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .cell.cross {
+    color: #f00;
+  }
+  
+  .cell.circle {
+    color: #00f;
+  }
+  
+  .status {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
