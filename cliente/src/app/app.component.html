@@ -35,7 +35,7 @@
       <h1>{{ganador}}</h1>
       <button (click)="reiniciar()">Reiniciar</button>
     }
-    @if(jugadorNumero==0){
+    @if(jugadorNumero==0 && buscando==false){
       
       <button (click)="buscarRival()">Buscar Rival</button>
     }

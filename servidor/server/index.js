@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {
     cors: {
-        origin: "http://localhost:4200",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
@@ -25,14 +25,14 @@ io.on("connection", (socket) => {
         let buscando = false;
 
         for (const p of partidas) {
-            if (p.usuario1 === socket.id || p.usuario2 === socket.id) {
+            if (p.usuario1 == socket.id || p.usuario2 == socket.id) {
                 buscando = true;
                 break;
             }
         }
 
         if (!buscando) {
-            let partida = partidas.find(p => p.usuario1 === null);
+            let partida = partidas.find(p => p.usuario1 == null);
 
             if (partida) {
               for(const p of partidas){
@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
               }
 
             } else {
-              partida = partidas.find(p => p.usuario2 === null);
+              partida = partidas.find(p => p.usuario2 == null);
               if(!partida){
                 partida = { usuario1: socket.id, usuario2: null,turno:1,username1:username,username2:null };
                 partidas.push(partida);
@@ -56,7 +56,7 @@ io.on("connection", (socket) => {
                     p.usuario2=socket.id
                     p.username2=username
                     io.to([p.usuario1,p.usuario2]).emit('encontrado', 'Partida encontrada');
-                    // io.to(p.usuario2).emit('buscando','Partida encontrada')
+                    
                   }
                 }
               }

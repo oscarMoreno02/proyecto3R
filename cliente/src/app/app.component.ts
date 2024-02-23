@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
   usuario={nombre:''}
   nombreRival:string=''
   mensaje=''
+  buscando=false
   constructor(private websocket: WebSocketService, private audioService: AudioService) { }
 
 
@@ -178,6 +179,7 @@ export class AppComponent implements OnInit {
 
   buscarRival() {
     this.websocket.buscar(this.usuario.nombre)
+    this.buscando=true
 
   }
 
