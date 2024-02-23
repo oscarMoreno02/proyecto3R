@@ -122,9 +122,10 @@ export class AppComponent implements OnInit {
           this.ganador='Has ganado'
         }else{
 
-          if (this.estaLLeno()) {
+          if (this.estaLLeno()==true) {
             this.heEmpatado()
             this.ganador='Empate'
+            this.finalizada=true
           }else{
             this.mandarMano()
             if(this.turnoActual==1){
@@ -162,16 +163,20 @@ export class AppComponent implements OnInit {
   estaLLeno(): boolean {
     let lleno = true
     for (let i = 0; i < this.board.length; i++) {
-      for (let x = 0; i < this.board[i].length; i++) {
+      for (let x = 0; x < this.board[i].length; x++) {
 
-        if (this.board[i][x] != 'O' || this.board[i][x] != 'X') {
+        if (this.board[i][x] != 'O' && this.board[i][x] != 'X') {
           lleno = false
           break
         }
       }
-      if (lleno == false) {
-        break
-      }
+        if (lleno == false) {
+          console.log('vacio')
+          break
+        }
+    }
+    if(lleno){
+      console.log('lleno')
     }
 
     return lleno

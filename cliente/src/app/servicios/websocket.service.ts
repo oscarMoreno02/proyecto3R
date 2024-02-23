@@ -12,7 +12,7 @@ export class WebSocketService {
   socket?:any
    
   constructor() {
-   this.socket = io('http://192.168.206.76:3000/')
+   this.socket = io('http://192.168.1.87:3000/')
 
    this.socket.on('connect', () => {
     console.log('Conectado');
